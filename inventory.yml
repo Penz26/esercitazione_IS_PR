@@ -1,0 +1,16 @@
+all:
+  children:
+    webservers:
+      hosts:
+        web-srv-01:
+          ansible_host: 192.168.1.10
+        web-srv-02:
+          ansible_host: 192.168.1.11
+    dbservers:
+      hosts:
+        db-srv-01:
+          ansible_host: 192.168.1.20
+
+# Task per Gruppo A: Aggiungere web-srv-03 (192.168.1.12)
+# Task per Gruppo B: Aggiungere web-srv-04 (192.168.1.13)
+# Se entrambi modificano la stessa riga, genereranno un conflitto.
