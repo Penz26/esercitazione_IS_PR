@@ -1,17 +1,16 @@
 #!/bin/bash
 
 # Configurazione
-SOURCE_DIR="/var/www/html"
-DEST_DIR="/backups/daily"
+SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
+SOURCE_DIR="$SCRIPT_DIR"
+DEST_DIR="$HOME/backups/daily"
 TIMESTAMP=$(date +%Y%m%d_%H%M%S)
 
 echo "Inizio backup dei dati..."
 
-# BUG: Lo script fallisce se DEST_DIR non esiste. 
-# Serve un comando che crei la cartella prima del backup.
-cp -r $SOURCE_DIR "$DEST_DIR/backup_$TIMESTAMP"
+mkdir -p "$DEST_DIR"
 
-if [ $? -eq 0 ]; then
+if cp -r "$SOURCE_DIR" "$DEST_DIR/backup_$TIMESTAMP"; then
     echo "Backup completato con successo in $DEST_DIR"
 else
     echo "Errore durante il backup!"
