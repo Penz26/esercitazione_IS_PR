@@ -6,6 +6,8 @@ all:
           ansible_host: 192.168.1.10
         web-srv-02:
           ansible_host: 192.168.1.11
+        web-srv-03:
+          ansible_host: 192.168.1.12
     dbservers:
       hosts:
         db-srv-01:
